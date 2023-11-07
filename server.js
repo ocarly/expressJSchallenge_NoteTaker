@@ -34,6 +34,9 @@ app.get('/api/notes', (req, res) => {
 app.post('/api/notes', (req, res) => {
   const readNoteStuff = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'))
   const postedNote = { title, text, id:uuidv4() }
+  readNoteStuff.push(postedNote)
+  fs.writeFileSync('./db/db.json', JSON.stringify(readNoteStuff))
+  res.json(readNoteStuff)
 })
 
 
