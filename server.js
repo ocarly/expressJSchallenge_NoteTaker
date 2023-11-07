@@ -1,6 +1,7 @@
 // required dependencies 
 const express = require('express');
 const path = require('path');
+const fs = require('fs')
 
 // Helper function for generating unique ids
 const {v4: uuidv4 } = require('uuid');
@@ -32,6 +33,7 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.post('/api/notes', (req, res) => {
+  const {title, text}=req.body
   const readNoteStuff = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'))
   const postedNote = { title, text, id:uuidv4() }
   readNoteStuff.push(postedNote)
