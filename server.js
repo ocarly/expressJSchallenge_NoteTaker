@@ -41,6 +41,15 @@ app.post('/api/notes', (req, res) => {
   res.json(readNoteStuff)
 })
 
+app.delete('/api/notes/:id', (req, res) => {
+  const readNoteStuff = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'))
+  const filteredNotes = readNoteStuff.filter((badNote) => {
+    return badNote.id !== req.params.id
+  })
+  fs.writeFileSync('./db/db.json', JSON.stringify(filteredNotes))
+  res.json({ message: 'your note is ded' })
+})
+
 
 app.listen(PORT, function() {
     console.log(`App listening on Port: ${PORT}`);
