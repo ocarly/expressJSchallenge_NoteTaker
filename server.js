@@ -31,7 +31,10 @@ app.get('/api/notes', (req, res) => {
   readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
-
+app.post('/api/notes', (req, res) => {
+  const readNoteStuff = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'))
+  const postedNote = { title, text, id:uuidv4() }
+})
 
 
 app.listen(PORT, function() {
