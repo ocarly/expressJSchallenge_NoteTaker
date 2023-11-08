@@ -1,6 +1,6 @@
 # ExpressJS challenge_NoteTaker
 
-Note Taker app that can be used to write and save notes. This application uses an Express.js back end and will save and retrieve note data from a JSON file.
+An application for taking notes, utilizing an Express.js backend to store and access note data via a JSON file, allowing users to write and save their notes.
 
 ## Application
 
